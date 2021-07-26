@@ -17,7 +17,9 @@ export class Favorite extends Component {
 
   componentDidMount = async (req, res) => {
     try {
-      const axiosGetUserData = await axios.get(`http://localhost:8000/fav`);
+      const axiosGetUserData = await axios.get(
+        `${process.env.REACT_APP_SERVER}/fav`
+      );
       const favoriteUserData = axiosGetUserData.data;
       this.setState({
         FavDigimon: favoriteUserData,
@@ -40,7 +42,7 @@ export class Favorite extends Component {
   deleteFavDigimon = async (e, idx) => {
     e.preventDefault();
     const DleteData = await axios.delete(
-      `http://localhost:8000/del/${this.state.FavDigimon[idx]._id}`
+      `h${process.env.REACT_APP_SERVER}/del/${this.state.FavDigimon[idx]._id}`
     );
     this.setState({
       FavDigimon: DleteData.data,
@@ -71,7 +73,9 @@ export class Favorite extends Component {
       img: this.state.img,
       level: this.state.level,
     };
-    const urlUdate = `http://localhost:8000/up/${this.state.FavDigimon[this.state.index]._id}`;
+    const urlUdate = `${process.env.REACT_APP_SERVER}/up/${
+      this.state.FavDigimon[this.state.index]._id
+    }`;
     const updateDataDigimon = await axios.put(urlUdate, updateName);
     console.log(this.state.FavDigimon[this.state.index]._id);
     this.setState({

@@ -13,7 +13,7 @@ export class Home extends Component {
 
   componentDidMount = async () => {
     try {
-      const alldataAPI = await axios.get(`http://localhost:8000/`);
+      const alldataAPI = await axios.get(`${process.env.REACT_APP_SERVER}/`);
       const finalGetData = alldataAPI.data;
       console.log(finalGetData);
       this.setState({
@@ -33,7 +33,7 @@ export class Home extends Component {
       img: item.img,
       level: item.level,
     };
-      await axios.post(`http://localhost:8000/`,dataForSend);
+      await axios.post(`${process.env.REACT_APP_SERVER}/`, dataForSend);
   };
 
   render() {
