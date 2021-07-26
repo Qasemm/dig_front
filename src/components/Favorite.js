@@ -42,7 +42,7 @@ export class Favorite extends Component {
   deleteFavDigimon = async (e, idx) => {
     e.preventDefault();
     const DleteData = await axios.delete(
-      `h${process.env.REACT_APP_SERVER}/del/${this.state.FavDigimon[idx]._id}`
+      `${process.env.REACT_APP_SERVER}/del/${this.state.FavDigimon[idx]._id}`
     );
     this.setState({
       FavDigimon: DleteData.data,
